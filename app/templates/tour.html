@@ -59,15 +59,7 @@
 {% include 'duoi.html' %}
 
 <script>
-// Function to clear a specific cookie by name
-    function clearCookie(cookieName) {
-        document.cookie = cookieName + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-    }
 
-    // Automatically clear the 'input_cookie' when the page is loaded
-    window.onload = function () {
-        clearCookie('input_cookie'); // Replace 'input_cookie' with your actual cookie name
-    };
 // Get all elements with the class "tour-item"
 var tourItems = document.querySelectorAll(".tour-item");
 

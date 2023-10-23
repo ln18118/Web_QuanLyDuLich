@@ -21,7 +21,7 @@ from app import models
 from app.models import db, Tour, HoaDon, User, DiaDiem, Feedback, UuDai
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = "mysql+pymysql://root:mật khẩu root@localhost/doan?charset=utf8mb4"
+app.config['SQLALCHEMY_DATABASE_URI'] = "mysql+pymysql://root:Mật khẫu root@localhost/doan?charset=utf8mb4"
 app.config['SECRET_KEY'] = '123456'
 db.init_app(app)
 principal = Principal(app)
@@ -104,6 +104,7 @@ def tour():
     global input_d
     if input_d is None:
         input_d = request.cookies.get('input_cookie')
+    input_d = request.cookies.get('input_cookie')
     users = models.User.query.all()
     dia_diem_data = []  # Initialize an empty list to store data
     input_value = request.args.get('input_value', '')
