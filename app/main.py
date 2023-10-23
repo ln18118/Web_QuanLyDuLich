@@ -21,7 +21,7 @@ from app import models
 from app.models import db, Tour, HoaDon, User, DiaDiem, Feedback, UuDai
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = "mysql+pymysql://root:18101995@localhost/doan?charset=utf8mb4"
+app.config['SQLALCHEMY_DATABASE_URI'] = "mysql+pymysql://root:mật khẩu root@localhost/doan?charset=utf8mb4"
 app.config['SECRET_KEY'] = '123456'
 db.init_app(app)
 principal = Principal(app)
