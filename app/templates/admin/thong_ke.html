@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thống kê tiền</title>
+    <!-- Include Chart.js library -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <h1>Thống kê tiền trong năm</h1>
+    <form method="POST">
+        <div class="form-group" style="
+    padding-bottom: 10px;
+">
+            <label for="number">năm :</label>
+            <input type="number" name="Year" required>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Nhập số năm</button>
+        <a href="/admin"> Quay lại admin</a>
+    </form>
+
+    <div style="width: 80%; margin: auto;">
+        <canvas id="orderChart"></canvas>
+    </div>
+    <form method="POST" action="/export_pdf">
+        <div>
+            <button type="submit" name="export_pdf">Export PDF</button>
+        </div>
+    </form>
+
+    </form>
+    <script>
+        // Parse labels and values from JSON
+        var labels = JSON.parse({{ labels|tojson|safe }});
+        var values = JSON.parse({{ values|tojson|safe }});
+
+        // Create a bar chart using Chart.js
+        var ctx = document.getElementById('orderChart').getContext('2d');
+        var chart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: '$',
+                    data: values,
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)', // Adjust the color as needed
+                    borderColor: 'rgba(75, 192, 192, 1)', // Adjust the color as needed
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,1038 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html">
+  {% include 'lienket.html' %}
+  <body>
+    <div>
+      <link href="./index.css" rel="stylesheet" />
+
+      <script
+        type="text/javascript"
+        src="https://unpkg.com/dangerous-html/dist/default/lib.umd.js"
+      ></script>
+
+{% include 'navbar.html' %}
+
+      <div class="home-container">
+
+
+        <section class="home-hero">
+          <div class="home-main">
+            <div class="home-video">
+              <video
+                src=""
+                poster="{{ url_for('static', filename='public/Videos/hero-cover1-1500h.png') }}"
+
+                class="home-video1"
+              ></video>
+
+
+              <div class="home-tint"></div>
+            </div>
+            <div class="home-content">
+
+              {% include 'navbar_2.html' %}
+              {% include 'dang_ki.html' %}
+
+              <div class="home-center">
+                <div class="home-heading">
+                  <h1 class="home-header">Nhìn thế giới như một người dân địa phương</h1>
+                  <p class="home-caption">
+                    Tìm cho bản thân 1 tour du lịch thoả đáng
+                  </p>
+                </div>
+                <form action="/setcookie" method="POST" onsubmit="return validateForm()" name="myForm" required>
+
+               <div class="home-border">
+
+                  <div class="home-filter">
+                    <img
+                      alt="image"
+                      src="{{ url_for('static', filename='public/Icons/location.svg') }}"
+                      class="home-image"
+                    />
+                    <input type="text" placeholder="Điểm đến" class="home-textinput input" name="iput1" id="input1">
+                    <input name="input1" id="hid1" type="hidden" value="Sapa">
+
+                    <input
+                      type="date"
+                      placeholder="Date"
+                      class="home-textinput1 input"
+                      name="iput2"
+                      id="input2"
+                    />
+                    <input name="input2" id="hid2" type="hidden">
+
+                    <input
+                      type="number"
+                      placeholder="Số lượng"
+                      class="home-textinput2 input"
+                      name="iput3"
+                      id="input3"
+                    />
+                    <input name="input3" id="hid3" type="hidden">
+
+                    <form action="/tour" method="GET" style="max-height: 10px;">
+                        <div class="home-search" style="position: relative;">
+                            <button type="submit" style="background-color: transparent; border: none;outline: none;"><img
+                                alt="image"
+                                src="{{ url_for('static', filename='public/Icons/search.svg') }}"
+                                class="home-icon10"
+                            /></button>
+                        </div>
+                    </form>
+                  </div>
+                   </form>
+                </div>
+
+              </div>
+
+            </div>
+          </div>
+          <div id="features" class="home-feaures">
+            <div class="home-content01">
+              <div class="feature-feature">
+                <div class="feature-heading">
+                  <img
+                    alt="image"
+
+                     src="{{ url_for('static', filename='public/Icons/thumbs-up.svg') }}"
+                    class="feature-icon"
+                  />
+                  <h3 class="feature-header">
+                    <span>Chất lượng cao</span>
+                  </h3>
+                </div>
+                <p class="feature-description">
+                  <span>
+                    Chúng tôi cam kết sẽ cung cấp 100% tour du lịch phù hợp đến mọi người
+                  </span>
+                </p>
+              </div>
+              <div class="feature-feature">
+                <div class="feature-heading">
+                  <img
+                    alt="image"
+
+                    src="{{ url_for('static', filename='public/Icons/headset.svg') }}"
+                    class="feature-icon"
+                  />
+                  <h3 class="feature-header"><span>24/7 Hỗ trợ</span></h3>
+                </div>
+                <p class="feature-description">
+                  <span>
+                    Đội hỗ trợ 24/7 hoạt động thường trực
+                  </span>
+                </p>
+              </div>
+              <div class="feature-feature">
+                <div class="feature-heading">
+                  <img
+                    alt="image"
+
+                     src="{{ url_for('static', filename='public/Icons/person.svg') }}"
+                    class="feature-icon"
+                  />
+                  <h3 class="feature-header"><span>Tour du lịch thú vị cho cá nhân</span></h3>
+                </div>
+                <p class="feature-description">
+                  <span>
+                    Nhiều địa điểm, khu du lịch dành cho cá nhân và tập thể
+                  </span>
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+
+        <section id="tours" class="home-quick-view">
+          <div class="home-main1">
+            <div class="home-heading01">
+              <h2 class="home-header01">Nhìn thế giới như một người dân địa phương</h2>
+              <p class="home-caption01">
+               Tìm cho bản thân 1 tour du lịch thoả đáng xứng đáng với thời gian và những gì đã cống hiến cho xã hội
+              </p>
+            </div>
+
+          </div>
+
+
+          <div class="home-offers">
+            <a>
+              <div class="home-offer-container">
+                <div class="offer-offer">
+                  <img
+                    alt="image"
+
+                    src="{{ url_for('static', filename='public/Offers/offers-11-1500w.png') }}"
+                    class="offer-image"
+                  />
+                  <div class="offer-content">
+                    <div class="offer-details">
+                      <span class="offer-text">
+                        <form action="/tour" method="GET">
+                            <div style="position: relative;">
+                                <input
+                                    type="text"
+                                    name="input_value"
+                                    value="Đà Lạt"
+                                    style="display:none"
+                                />
+                              <input
+                                    type="Date"
+                                    name="input_value2"
+                                    value="2022-07-20"
+                                    style="display:none"
+                                />
+                              <input
+                                    type="number"
+                                    name="input_value3"
+                                    value="1"
+                                    style="display:none"
+                                />
+                              <button type="submit"style="background-color: transparent; border: 2px solid red;
+  border-radius: 5px; outline: none;" >Đà Lạt</button>
+                            </div>
+                        </form>
+                      </span>
+                      <span class="offer-text1">
+                        <span>3 Địa điểm du lịch thú vị</span>
+                      </span>
+                    </div>
+                    <span class="offer-text2">
+                      <span>
+                        Đà Lạt là thành phố tỉnh lỵ trực thuộc tỉnh Lâm Đồng, nằm trên cao nguyên Lâm Viên, thuộc vùng Tây Nguyên, Việt Nam
+                      </span>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </a>
+
+            <a>
+              <div class="home-offer-container1">
+                <div class="offer-offer">
+                  <img
+                    alt="image"
+
+                    src="{{ url_for('static', filename='public/Offers/offers-21-1500w.png') }}"
+                    class="offer-image"
+                  />
+                  <div class="offer-content">
+                    <div class="offer-details">
+                      <span class="offer-text">
+                        <form action="/tour" method="GET">
+                            <div style="position: relative;">
+                                <input
+                                    type="text"
+                                    name="input_value"
+                                    value="Vũng Tàu"
+                                    style="display:none"
+                                />
+                              <input
+                                    type="Date"
+                                    name="input_value2"
+                                    value="2022-07-20"
+                                    style="display:none"
+                                />
+                              <input
+                                    type="number"
+                                    name="input_value3"
+                                    value="1"
+                                    style="display:none"
+                                />
+                              <button type="submit" style="background-color: transparent; border: 2px solid red;
+  border-radius: 5px; outline: none;" >Vũng Tàu</button>
+                            </div>
+                        </form>
+                      </span>
+                      <span class="offer-text1">
+                        <span>54 Địa điểm du lịch thú vị</span>
+                      </span>
+                    </div>
+                    <span class="offer-text2">
+                      <span>
+                        Đây là trung tâm kinh tế, tài chính, văn hóa, du lịch, giao thông - vận tải và giáo dục và là một trong những trung tâm kinh tế của vùng Đông Nam Bộ.
+                      </span>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </a>
+
+            <a>
+              <div class="home-offer-container2">
+                <div class="offer-offer">
+                  <img
+                    alt="image"
+
+                    src="{{ url_for('static', filename='public/Offers/offers-31-1500w.png') }}"
+                    class="offer-image"
+                  />
+                  <div class="offer-content">
+                    <div class="offer-details">
+                      <span class="offer-text">
+                         <form action="/tour" method="GET">
+                            <div style="position: relative;">
+                                <input
+                                    type="text"
+                                    name="input_value"
+                                    value="Hội An"
+                                    style="display:none"
+                                />
+                              <input
+                                    type="Date"
+                                    name="input_value2"
+                                    value="2022-07-20"
+                                    style="display:none"
+                                />
+                              <input
+                                    type="number"
+                                    name="input_value3"
+                                    value="1"
+                                    style="display:none"
+                                />
+                              <button type="submit" style="background-color: transparent; border: 2px solid red;
+  border-radius: 5px; outline: none;" >Hội An</button>
+                            </div>
+                        </form>
+                      </span>
+                      <span class="offer-text1">
+                        <span>34  Địa điểm du lịch thú vị</span>
+                      </span>
+                    </div>
+                    <span class="offer-text2">
+                      <span>
+                        Phố cổ Hội An từng là một thương cảng quốc tế sầm uất, gồm những di sản kiến trúc đã có từ hàng trăm năm trước.
+                      </span>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </a>
+            <a>
+              <div class="home-offer-container3">
+                <div class="offer-offer">
+                  <img
+                    alt="image"
+
+                    src="{{ url_for('static', filename='public/Offers/offers-41-1500w.png') }}"
+                    class="offer-image"
+                  />
+                  <div class="offer-content">
+                    <div class="offer-details">
+                      <span class="offer-text">
+                         <form action="/tour" method="GET">
+                            <div style="position: relative;">
+                                <input
+                                    type="text"
+                                    name="input_value"
+                                    value="Sài Gòn"
+                                    style="display:none"
+                                />
+                              <input
+                                    type="Date"
+                                    name="input_value2"
+                                    value="2022-07-20"
+                                    style="display:none"
+                                />
+                              <input
+                                    type="number"
+                                    name="input_value3"
+                                    value="1"
+                                    style="display:none"
+                                />
+                              <button type="submit" style="background-color: transparent; border: 2px solid red;
+  border-radius: 5px; outline: none;" >Sài Gòn</button>
+                            </div>
+                        </form>
+                      </span>
+                      <span class="offer-text1">
+                        <span>1 Địa điểm du lịch thú vị</span>
+                      </span>
+                    </div>
+                    <span class="offer-text2">
+                      <span>
+                        Thành phố Hồ Chí Minh (thường được gọi là Sài Gòn) là một thành phố ở miền nam Việt Nam nổi tiếng với vai trò nòng cốt trong chiến tranh Việt Nam.
+                      </span>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </a>
+            <a style="
+    height: 490.410px;
+">
+              <div class="home-offer-container4">
+                <div class="offer-offer">
+                  <img
+                    alt="image"
+
+                    src="{{ url_for('static', filename='public/Offers/offers-51-1500w.png') }}"
+                    class="offer-image"
+                  />
+                  <div class="offer-content">
+                    <div class="offer-details">
+                      <span class="offer-text">
+                         <form action="/tour" method="GET">
+                            <div style="position: relative;">
+                                <input
+                                    type="text"
+                                    name="input_value"
+                                    value="Hà Nội"
+                                    style="display:none"
+                                />
+                              <input
+                                    type="Date"
+                                    name="input_value2"
+                                    value="2022-07-20"
+                                    style="display:none"
+                                />
+                              <input
+                                    type="number"
+                                    name="input_value3"
+                                    value="1"
+                                    style="display:none"
+                                />
+                              <button type="submit" style="background-color: transparent; border: 2px solid red;
+  border-radius: 5px; outline: none;">Hà Nội</button>
+                            </div>
+                        </form>
+                      </span>
+                      <span class="offer-text1">
+                        <span>6  Địa điểm du lịch thú vị</span>
+                      </span>
+                    </div>
+                    <span class="offer-text2">
+                      <span>
+                        Hà Nội, thủ đô của Việt Nam, nổi tiếng với kiến trúc trăm tuổi và nền văn hóa phong phú
+                      </span>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </a>
+            <a>
+              <div class="home-offer-container5">
+                <div class="offer-offer">
+                  <img
+                    alt="image"
+
+                    src="{{ url_for('static', filename='public/Offers/offers-61-1500w.png') }}"
+                    class="offer-image"
+                  />
+                  <div class="offer-content">
+                    <div class="offer-details">
+                      <span class="offer-text">
+                        <form action="/tour" method="GET">
+                            <div style="position: relative;">
+                                <input
+                                    type="text"
+                                    name="input_value"
+                                    value="Nha Trang"
+                                    style="display:none"
+                                />
+                              <input
+                                    type="Date"
+                                    name="input_value2"
+                                    value="2022-07-20"
+                                    style="display:none"
+                                />
+                              <input
+                                    type="number"
+                                    name="input_value3"
+                                    value="1"
+                                    style="display:none"
+                                />
+                              <button type="submit" style="background-color: transparent;border: 2px solid red;
+  border-radius: 5px; outline: none;">Nha Trang</button>
+                            </div>
+                        </form>
+                      </span>
+                      <span class="offer-text1">
+                        <span>132 Địa điểm du lịch thú vị</span>
+                      </span>
+                    </div>
+                    <span class="offer-text2">
+                      <span>
+                        Nha Trang là một thành phố ven biển và là trung tâm chính trị, kinh tế, văn hóa, khoa học kỹ thuật và du lịch của tỉnh Khánh Hòa, Việt Nam
+                      </span>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </a>
+            <a style="
+    height: 490.410px;
+">
+              <div class="home-offer-container6">
+                <div class="offer-offer">
+                  <img
+                    alt="image"
+
+                    src="{{ url_for('static', filename='public/Offers/offers-71-1500w.png') }}"
+                    class="offer-image"
+                  />
+                  <div class="offer-content">
+                    <div class="offer-details">
+                      <span class="offer-text">
+                        <form action="/tour" method="GET">
+                            <div style="position: relative;">
+                                <input
+                                    type="text"
+                                    name="input_value"
+                                    value="Đồng Bằng Sông Cửu Long"
+                                    style="display:none"
+                                />
+                              <input
+                                    type="Date"
+                                    name="input_value2"
+                                    value="2022-07-20"
+                                    style="display:none"
+                                />
+                              <input
+                                    type="number"
+                                    name="input_value3"
+                                    value="1"
+                                    style="display:none"
+                                />
+                              <button type="submit" style="background-color: transparent; border: 2px solid red;
+  border-radius: 5px; outline: none;">Đồng Bằng Sông Cửu Long</button>
+                            </div>
+                        </form>
+                      </span>
+                      <span class="offer-text1">
+                        <span>1 Địa điểm du lịch thú vị</span>
+                      </span>
+                    </div>
+                    <span class="offer-text2">
+                      <span>
+                        Vùng đồng bằng sông Cửu Long là vùng cực nam của Việt Nam, một trong hai phần của Nam Bộ
+                      </span>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </a>
+            <a>
+              <div class="home-offer-container7">
+                <div class="offer-offer">
+                  <img
+                    alt="image"
+
+                    src="{{ url_for('static', filename='public/Offers/offers-81-1500w.png') }}"
+                    class="offer-image"
+                  />
+                  <div class="offer-content">
+                    <div class="offer-details">
+                      <span class="offer-text">
+                        <form action="/tour" method="GET">
+                            <div style="position: relative;">
+                                <input
+                                    type="text"
+                                    name="input_value"
+                                    value="Sapa"
+                                    style="display:none"
+                                />
+                              <input
+                                    type="Date"
+                                    name="input_value2"
+                                    value="2022-07-20"
+                                    style="display:none"
+                                />
+                              <input
+                                    type="number"
+                                    name="input_value3"
+                                    value="1"
+                                    style="display:none"
+                                />
+                              <button type="submit" style="background-color: transparent; border: 2px solid red;
+  border-radius: 5px; outline: none;" >Sapa</button>
+                            </div>
+                        </form>
+                      </span>
+                      <span class="offer-text1">
+                        <span>6 Địa điểm du lịch thú vị</span>
+                      </span>
+                    </div>
+                    <span class="offer-text2">
+                      <span>
+                         Thị trấn chợ Sapa rực rỡ sắc màu và rất duyên dáng, mang đến cho du khách một ốc đảo hoàn hảo giữa chuyến du lịch
+                      </span>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </a>
+            <a>
+              <div class="home-offer-container8">
+                <div class="offer-offer">
+                  <img
+                    alt="image"
+
+                    src="{{ url_for('static', filename='public/Offers/offers-91-1500w.png') }}"
+                    class="offer-image"
+                  />
+                  <div class="offer-content">
+                    <div class="offer-details">
+                      <span class="offer-text">
+                        <form action="/tour" method="GET">
+                            <div style="position: relative;">
+                                <input
+                                    type="text"
+                                    name="input_value"
+                                    value="Đà Nẵng"
+                                    style="display:none"
+                                />
+                              <input
+                                    type="Date"
+                                    name="input_value2"
+                                    value="2022-07-20"
+                                    style="display:none"
+                                />
+                              <input
+                                    type="number"
+                                    name="input_value3"
+                                    value="1"
+                                    style="display:none"
+                                />
+                              <button type="submit" style="background-color: transparent; border: 2px solid red;
+  border-radius: 5px; outline: none;">Đà Nẵng</button>
+                            </div>
+                        </form>
+                      </span>
+                      <span class="offer-text1">
+                        <span>132 Địa điểm du lịch thú vị</span>
+                      </span>
+                    </div>
+                    <span class="offer-text2">
+                      <span>
+                        Đà Nẵng là một trong năm thành phố trực thuộc trung ương của Việt Nam
+                      </span>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+
+
+
+        </section>
+
+<!-------------CHATGPT------------------>
+
+<section class="home-testimonials">
+    <div class="testimonial-container"style="
+    position: relative;
+    right: 125px;
+    width: 1700px;
+">
+        {% for feedback in feedback_data %}
+            <div class="testimonial">
+                <div class="home-content02">
+                    <div class="home-heading02">
+                        <span class="home-title">Đánh giá của khách hàng</span>
+                        <p class="home-quote">{{ feedback.Feedback }}</p> <!-- Assuming 'comment' is the field for feedback text -->
+                    </div>
+                    <div class="home-details">
+                        <div class="home-author">
+                            <img alt="image" src="{{ url_for('static', filename='public/Avatar/quote-200h.png') }}" class="home-avatar"/>
+                            <span class="home-name">{{ user_data.get(feedback.Khach_ID, 'Unknown User') }}</span>
+                          <div class="rating-stars">
+                            {% for i in range(feedback.Danh_gia) %}
+                                ⭐
+                            {% endfor %}
+                          </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</section>
+
+    <!-- Add more testimonials as needed -->
+  </div>
+  <div class="home-controls">
+    <div class="page prev"><span class="home-text13">&lt;</span></div>
+    <div class="page next"><span class="home-text14">&gt;</span></div>
+  </div>
+</section>
+
+<!-------------CHATGPT------------------>
+
+
+        <section id="how-it-works" class="home-highlights" style="
+    position: relative;
+
+">
+          <div class="home-highlight"style="
+    position: relative;
+    left: 300px;
+">
+            <div class="home-content03">
+              <div class="home-heading03">
+                <h2 class="home-header02">
+                  Trải Nghiệm Độc Đáo
+                </h2>
+                <p class="home-caption02">
+                  Hãy khám phá những trải nghiệm độc đáo chỉ có tại Việt Nam. Từ ẩm thực đường phố ngon lành đến lễ hội văn hóa sôi động, bạn sẽ tạo ra những kỷ niệm đáng nhớ.
+                </p>
+              </div>
+
+            </div>
+            <div class="home-image1">
+              <img
+                alt="image"
+
+                src="{{ url_for('static', filename='public/Highlights/highlight-1-1500w.png') }}"
+                class="home-image2"
+              />
+              <div class="home-rectangle"></div>
+            </div>
+          </div>
+          <div class="home-highlight1"style="
+    position: relative;
+    left: 300px;
+">
+            <div class="home-image3">
+              <img
+                alt="image"
+
+                src="{{ url_for('static', filename='public/Highlights/highlight-2-1500w.png') }}"
+                class="home-image4"
+              />
+            </div>
+            <div class="home-content04">
+              <div class="home-heading04">
+                <h2 class="home-header03">
+                   Lịch Trình Linh Hoạt
+                </h2>
+                <p class="home-caption03">
+                  <span>
+                    Với chúng tôi, bạn có thể tự do tạo lịch trình của mình. Chọn các tour ngắn hạn hoặc du lịch dài hạn, tùy theo lịch trình của bạn.
+                  </span>
+                  <br />
+                  <br />
+                  <span>
+                    Hãy để chúng tôi lo lắng về mọi chi tiết của chuyến đi của bạn. Tận hưởng sự chuyên nghiệp và phục vụ tận tâm từ đội ngũ hướng dẫn viên và nhân viên của chúng tôi.
+                  </span>
+                  <br />
+                </p>
+              </div>
+
+            </div>
+          </div>
+        </section>
+        <section id="destinations" class="home-destinations"style="
+    position: relative;
+    left: 250px;
+">
+          <div class="home-video-details">
+            <div class="home-heading05">
+              <h2 class="home-header04">Điểm đến nổi bật</h2>
+              <p class="home-caption04">
+                Từ vùng biển tuyệt đẹp đến những ngọn núi hùng vĩ, chúng tôi mang đến cho bạn cơ hội khám phá những địa điểm độc đáo và không thể bỏ lỡ trên khắp Việt Nam.
+              </p>
+            </div>
+            <div class="home-video-wrapper">
+
+            <video
+    poster="{{ url_for('static', filename='public/Videos/spotlight-cover1-1500w.png') }}"
+    class="home-video2"
+
+>
+</video>
+
+
+            </div>
+          </div>
+          <p class="home-caption05">
+            Đất nước Việt Nam cong cong hình chữ S có nhiều danh thắng mang vẻ đẹp tự nhiên, cùng nền văn hoá đặc sắc là điểm đến tuyệt vời trong mắt du khách
+          </p>
+          <div class="home-list">
+            <a class="home-navlink09">
+              <div class="home-location-wrapper">
+                <div class="location-item">
+                  <img
+                    alt="image"
+
+                    src="{{ url_for('static', filename='public/Destinations/destination-1-400h.png') }}"
+                    class="location-background"
+                  />
+                  <div class="location-content">
+                    <span class="location-location">
+                      <span>Đà Lạt</span>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </a>
+            <a class="home-navlink10">
+              <div class="home-location-wrapper1">
+                <div class="location-item">
+                  <img
+                    alt="image"
+
+                    src="{{ url_for('static', filename='public/Destinations/destination-2-400h.png') }}"
+                    class="location-background"
+                  />
+                  <div class="location-content">
+                    <span class="location-location">
+                      <span>Thành Phố Hồ Chí Minh</span>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </a>
+            <a class="home-navlink11">
+              <div class="home-location-wrapper2">
+                <div class="location-item">
+                  <img
+                    alt="image"
+
+                    src="{{ url_for('static', filename='public/Destinations/destination-3-400h.png') }}"
+                    class="location-background"
+                  />
+                  <div class="location-content">
+                    <span class="location-location">
+                      <span>Hà nội</span>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </a>
+            <a class="home-navlink12">
+              <div class="home-location-wrapper3">
+                <div class="location-item">
+                  <img
+                    alt="image"
+
+                    src="{{ url_for('static', filename='public/Destinations/destination-4-400h.png') }}"
+                    class="location-background"
+                  />
+                  <div class="location-content">
+                    <span class="location-location">
+                      <span>Sapa</span>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+
+        </section>
+
+       
+
+
+        {% include 'duoi.html' %}
+        <div>
+          <dangerous-html
+            html="<script>
+  function initAccordion() {
+    /*
+    Accordion - Code Embed
+    */
+    const accordionContainers = document.querySelectorAll(
+      '[data-role='accordion-container']'
+    ); // All accordion containers
+    const accordionContents = document.querySelectorAll(
+      '[data-role='accordion-content']'
+    ); // All accordion content
+    const accordionIconsClosed = document.querySelectorAll(
+      '[data-role='accordion-icon-closed']'
+    ); // All accordion closed icons
+    const accordionIconsOpen = document.querySelectorAll(
+      '[data-role='accordion-icon-open']'
+    ); // All accordion open icons
+
+    accordionContents.forEach((accordionContent) => {
+      accordionContent.style.display = 'none'; //Hides all accordion contents
+    });
+
+    accordionIconsClosed.forEach((icon) => {
+      icon.style.display = 'flex';
+    });
+
+    accordionIconsOpen.forEach((icon) => {
+      icon.style.display = 'none';
+    });
+
+    accordionContainers.forEach((accordionContainer, index) => {
+      if (accordionContainer.classList.contains('initialised')) {
+        return;
+      }
+
+      accordionContainer.classList.add('initiased');
+
+      accordionContainer.addEventListener('click', () => {
+        if (accordionContents[index].style.display === 'flex') {
+          // If the accordion is already open, close it
+          accordionContents[index].style.display = 'none';
+          accordionIconsClosed[index].style.display = 'flex';
+          accordionIconsOpen[index].style.display = 'none';
+        } else {
+          // If the accordion is closed, open it
+          accordionContents.forEach((accordionContent) => {
+            accordionContent.style.display = 'none'; //Hides all accordion contents
+          });
+
+          accordionIconsClosed.forEach((accordionIcon) => {
+            accordionIcon.style.display = 'flex'; // Resets all icon transforms to 0deg (default)
+          });
+
+          accordionIconsOpen.forEach((accordionIcon) => {
+            accordionIcon.style.display = 'none';
+          });
+
+          accordionContents[index].style.display = 'flex'; // Shows accordion content
+          accordionIconsClosed[index].style.display = 'none'; // Rotates accordion icon 180deg
+          accordionIconsOpen[index].style.display = 'flex';
+        }
+      });
+    });
+  }
+
+  initAccordion();
+</script>
+"
+          ></dangerous-html>
+        </div>
+      </div>
+    </div>
+    <script
+      data-section-id="navbar"
+      src="https://unpkg.com/@teleporthq/teleport-custom-scripts"
+    ></script>
+    <script>
+
+function toggleElements(showOverlay, showHiddenDiv, showUserprof, showOverlay1, showHiddenDiv1) {
+  var overlay = document.getElementById("overlay");
+  var hiddenDiv = document.getElementById("hiddenDiv");
+  var hiddenDis = document.getElementById("Userprof");
+  var hiddenDis1 = document.getElementById("login-form");
+  var hiddenDis2 = document.getElementById("formContent");
+  var overlay1 = document.getElementById("overlay1");
+  var hiddenDiv1 = document.getElementById("hiddenDiv1");
+
+  overlay.style.display = showOverlay ? "block" : "none";
+  hiddenDiv.style.display = showHiddenDiv ? "block" : "none";
+  hiddenDis.style.display = showUserprof ? "block" : "none";
+  hiddenDis1.style.display = showUserprof ? "none" : "block";
+  hiddenDis1.style.visibility = showUserprof ? "hidden" : "visible";
+  hiddenDis2.style.maxWidth = showUserprof ? "1px" : "450px";
+  overlay1.style.display = showOverlay1 ? "block" : "none";
+  hiddenDiv1.style.display = showHiddenDiv1 ? "block" : "none";
+}
+
+document.getElementById("show1").addEventListener("click", function() {
+  toggleElements(true, true, false, false, false);
+});
+
+document.getElementById("overlay").addEventListener("click", function() {
+  toggleElements(false, false, false, false, false);
+});
+
+document.getElementById("show3").addEventListener("click", function() {
+  toggleElements(true, true, true, false, false);
+});
+
+document.getElementById("show2").addEventListener("click", function() {
+  toggleElements(false, false, false, true, true);
+});
+
+document.getElementById("overlay1").addEventListener("click", function() {
+  toggleElements(false, false, false, false, false);
+});
+
+
+  </script>
+<!-- Slide show -->
+  <script>
+const nodeList = document.querySelectorAll(".position");
+
+for (let i = 0; i < nodeList.length; i++) {
+  const attributeName = "element_" + i;
+
+  // Add a click event listener to each element
+  nodeList[i].addEventListener("click", function() {
+    // Get the text content of the clicked element
+    const elementText = this.textContent;
+
+    // Set the value of input1 to the text content of the clicked element
+    document.querySelector('#hid1').value = 'Sapa';
+    document.querySelector('#hid2').value = '2022-07-20'; // Assuming this is a string
+    document.querySelector('#hid3').value = '1'; // Assuming this is a string
+
+    this.closest('form').submit();
+  });
+}
+
+
+    const testimonials = document.querySelectorAll(".testimonial");
+const prevBtn = document.querySelector(".prev");
+const nextBtn = document.querySelector(".next");
+
+let currentIndex = 0;
+
+function showTestimonial(index) {
+  testimonials.forEach((testimonial, idx) => {
+    testimonial.style.transform = `translateX(-${index * 100}%)`;
+  });
+}
+
+prevBtn.addEventListener("click", () => {
+  currentIndex = (currentIndex - 1 + testimonials.length) % testimonials.length;
+  showTestimonial(currentIndex);
+});
+
+nextBtn.addEventListener("click", () => {
+  currentIndex = (currentIndex + 1) % testimonials.length;
+  showTestimonial(currentIndex);
+});
+
+// Show the first testimonial initially
+showTestimonial(currentIndex);
+
+
+function validateForm() {
+  var x = document.forms["myForm"]["iput1"].value;
+  var y = document.forms["myForm"]["iput2"].value;
+  var z = document.forms["myForm"]["iput3"].value;
+  if (x == "") {
+    alert("Nhập địa chỉ");
+    return false;
+  }
+  if (y == "") {
+    alert("Nhập ngày");
+    return false;
+  }
+  if (z == "") {
+    alert("Nhập số lượng người");
+    return false;
+  }
+}
+ // Get all elements with the class "destination"
+    var destinationElements = document.querySelectorAll('.position');
+
+    // Initialize an empty array to store the text
+    var destinations = [];
+
+    // Loop through each element and extract the text
+    destinationElements.forEach(function(element) {
+        var destinationText = element.textContent;
+        destinations.push(destinationText);
+
+        // Set a cookie for each destination
+        document.cookie = 'destination=' + encodeURIComponent(destinationText);
+    });
+
+  </script>
+
+  <!-- script for feedback -->
+
+
+  </body>
+</html>

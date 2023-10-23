@@ -1,0 +1,266 @@
+<!-- lichsu_dattour.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- ... (your head content) -->
+<style>
+    /* Add CSS styles for table and decoration here */
+    body {
+        background-color: #f2f2f2; /* Set a background color for the body */
+    }
+    .page-container {
+        text-align: center;
+        color: white;
+        font-size: 48px;
+        margin-left: 100px;
+    }
+    h2 {
+        color: white;
+        padding: 48px;
+        font-size: 48px;
+    }
+    .table-container {
+        margin: 20px auto; /* Center the table horizontally */
+        max-width: 910px; /* Adjust the maximum width of the table */
+        background-color: white; /* Set a background color for the table container */
+        padding: 20px; /* Add some padding around the table */
+        box-shadow: 0px 4px 48px 12px rgba(0, 0, 0, 0.09);
+        border-radius: 10px;
+    }
+    table {
+        width: 120%;
+        border-collapse: collapse;
+        border-spacing: 0;
+    }
+    th, td {
+        padding: 15px; /* Increase padding for a bigger table */
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
+    th {
+        background-color: #f2f2f2;
+    }
+    .no-records {
+        text-align: center;
+        margin-top: 10px;
+        color: black; /* Make the text inside the "no-records" div white */
+    }
+    .record {
+        background-color: #fff;
+        box-shadow: 0px 4px 48px 12px rgba(0, 0, 0, 0.09);
+        border-radius: 10px;
+        margin-bottom: 20px;
+    }
+    .table-container {
+        margin: 0 auto;
+        background-color: white;
+        padding: 20px;
+        box-shadow: 0px 4px 48px 12px rgba(0, 0, 0, 0.09);
+        border-radius: 25px;
+        margin-left: 200px;
+    }
+    .feedback-modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+        justify-content: center;
+        align-items: center;
+    }
+
+    .feedback-modal-content {
+        background-color: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0px 4px 48px 12px rgba(0, 0, 0, 0.09);
+        text-align: center;
+    }
+        /* Style for the "Submit" button */
+    button[type="button"] {
+        background-color: #007bff; /* Button background color */
+        color: #fff; /* Button text color */
+        border: none;
+        border-radius: 5px;
+        padding: 10px 20px;
+        cursor: pointer;
+        margin-right: 10px;
+    }
+
+    /* Style for the "Cancel" button */
+    button[type="button"]:last-child {
+        background-color: #ccc; /* Button background color */
+        color: #000; /* Button text color */
+    }
+</style>
+</head>
+<body>
+    <div class="element element1">
+        {% include 'chinhgiua.html' %}
+    </div>
+    <div class="element element2" style="display:block;width:300px">
+        <section class="section-medium" style="margin-left:55px;margin-top:-35px;border-radius: 25px;">
+            <div class="row" id="row2">
+                <div class="columns medium-4" style="
+    top: -65px;
+    position: relative;
+">
+                    <!-- Add the title above the table -->
+                    <div class="page-container" style="position:relative;left:35px">
+                        <h2>Lịch sử đặt tour</h2>
+                    </div>
+                    <!-- Check if there are any HoaDon records to display -->
+                    {% if hoadon_data %}
+                        <div class="table-container">
+                            <table style="
+    width: 863px;
+">
+                                <thead>
+                                    <tr>
+                                        <th>ID Hóa Đơn</th>
+                                        <th>Địa điểm</th>
+                                        <th>Ngày thanh toán</th>
+                                        <th>Giảm giá</th>
+                                        <th>Số tiền thanh toán</th>
+                                        <th>Số người đi</th>
+                                        <th>Đánh giá</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for hoadon in hoadon_data %}
+                                        {% for tour in tour_data %}
+                                            {% if hoadon.Tour_ID == tour.ID %}
+                                                {% for diadiem in diadiem_data %}
+                                                    {% if tour.Dia_diem_ID == diadiem.ID %}
+                                                        <tr class="record">
+                                                            <td>{{ hoadon.ID }}</td>
+                                                            <td>{{ diadiem.Ten }}</td>
+                                                            <td>{{ hoadon.Ngay_thanh_toan }}</td>
+                                                            {% if hoadon.UuDai_ID %}
+                                                                {% for uudai in uudai_data %}
+                                                                    {% if hoadon.UuDai_ID == uudai.id %}
+                                                                        <td>{{ uudai.gia_tri * 100 }} %</td>
+                                                                    {% endif %}
+                                                                {% endfor %}
+                                                            {% else %}
+                                                                    <td>0.0</td>
+                                                            {% endif %}
+
+                                                            <td>{{ hoadon.So_tien_thanh_toan }}</td>
+                                                            <td>{{ hoadon.So_luong_nguoi_di }}</td>
+                                                            <td>
+                                                                <a href="javascript:void(0);" onclick="openFeedbackModal({{ hoadon.ID }}, '{{ tour.Dia_diem_ID }}', '{{ hoadon.Ngay_thanh_toan }}', {{ hoadon.So_tien_thanh_toan }}, {{ hoadon.So_luong_nguoi_di }}, '{{ diadiem.Ten }}')">Feedback</a>
+                                                            </td>
+                                                        </tr>
+                                                        <div class="feedback-modal" id="feedbackModal">
+                                                            <div class="feedback-modal-content">
+                                                                <h3>Provide Feedback</h3>
+                                                                <form id="feedbackForm">
+                                                                    <textarea id="feedbackText" placeholder="Enter your feedback" rows="4" cols="50"></textarea>
+                                                                    <br>
+                                                                    <button type="button" onclick="submitFeedback(${ID}, '{{ hoadon.Tour_ID }}')">Gữi đánh giá</button>
+                                                                    <button type="button" onclick="closeFeedbackModal()">Hủy</button>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                    {% endif %}
+                                                {% endfor %}
+                                            {% endif %}
+                                        {% endfor %}
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    <!-- If there are no HoaDon records -->
+                    {% else %}
+                        <div class="no-records">
+                            <p>Bạn chưa sử dụng dịch vụ của chúng tôi</p>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </section>
+
+
+    </div>
+    {% include 'duoi.html' %}
+    <script>
+    // Function to open the feedback modal and populate it with data
+    function openFeedbackModal(ID, Tour_ID, Ngay_thanh_toan, So_tien_thanh_toan, So_luong_nguoi_di,Ten) {
+        var modal = document.getElementById("feedbackModal");
+        var modalContent = document.querySelector(".feedback-modal-content");
+        var feedbackText = document.getElementById("feedbackText");
+
+        // Populate the modal with data
+        modalContent.innerHTML = `
+            <h3>Đánh giá chuyến đi</h3>
+            <p>ID hóa đơn: ${ID}</p>
+            <p>Địa điểm: ${Ten}</p>
+            <p>Ngày thanh toán: ${Ngay_thanh_toan}</p>
+            <p>Số tiền thanh toán: ${So_tien_thanh_toan}</p>
+            <p>Lượng người đi: ${So_luong_nguoi_di}</p>
+            <p>
+                <div>Đánh giá: </div>
+                <select id="rating" name="rating">
+                    <option value="1">1 Sao</option>
+                    <option value="2">2 Sao</option>
+                    <option value="3">3 Sao</option>
+                    <option value="4">4 Sao</option>
+                    <option value="5">5 Sao</option>
+                </select>
+            </p>
+            <textarea id="feedbackText" placeholder="Enter your feedback" rows="4" cols="50"></textarea>
+            <br>
+            <button type="button" onclick="submitFeedback(${ID}, ${Tour_ID})">Gữi đánh giá</button>
+            <button type="button" onclick="closeFeedbackModal()">Hủy</button>
+        `;
+
+        modal.style.display = "block";
+    }
+
+    // Function to close the feedback modal
+    function closeFeedbackModal() {
+        var modal = document.getElementById("feedbackModal");
+        modal.style.display = "none";
+    }
+
+    // Function to submit feedback
+    function submitFeedback(ID, Tour_ID) {
+        var feedbackText = document.getElementById("feedbackText").value;
+        var rating = document.getElementById("rating").value;
+
+        // Create an object to send as JSON data
+        var feedbackData = {
+            ID: ID,
+            Feedback: feedbackText,
+            Tour_ID: Tour_ID,
+            Rating: rating
+        };
+
+        // Send the feedback data to your Flask backend
+        fetch('/submit_feedback', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(feedbackData)
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                alert("Đánh giá đã gửi thành công cho hóa đơn số: " + ID);
+                closeFeedbackModal();
+            } else {
+                alert("Gữi đánh giá thất bại");
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert("An error occurred while submitting feedback.");
+        });
+    }
+</script>
+</body>
+</html>

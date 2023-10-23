@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Confirm Payment</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .info-columns {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+        .column {
+            width: 48%;
+        }
+        label {
+            font-weight: bold;
+        }
+        form {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            margin-top: 20px;
+        }
+        #promo-code-validation-result {
+            text-align: center;
+            margin-top: 10px;
+        }
+        #discount-amount {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Xác nhận thanh toán</h1>
+        <div class="info-columns">
+            <div class="column">
+                <p><strong>Thông tin chuyến đi:</strong></p>
+                <p>Địa điểm tham quan: {{ tour_name }}</p>
+                <p>Ngày khởi hành: {{ departure }}</p>
+                <p>Ngày về: {{ comeback }}</p>
+                <p>Số người đi: {{ num_people }}</p>
+                <p>Tổng phí: {{ total_price }} x {{ num_people }}</p>
+            </div>
+            <div class="column">
+                <p><strong>Thông tin khách hàng:</strong></p>
+                <p>Tên: {{ customer_name }}</p>
+                <p>Email: {{ customer_email }}</p>
+                <p>Số điện thoại: {{ customer_phone }}</p>
+                <p>Ghi chú: {{ customer_note }}</p>
+            </div>
+        </div>
+
+        <form action="/confirm_payment" method="post">
+            <input type="hidden" name="tour_id" value="{{ tour_id }}">
+            <input type="hidden" name="num_people" value="{{ num_people }}">
+            <input type="hidden" name="total_price" value="{{ total_price }}">
+            <input type="hidden" name="customer_note" value="{{ customer_note }}">
+            <label for="promo_code">Promo Code:</label>
+            <input type="text" name="promo_code" id="promo_code">
+            <div id="promo-code-validation-result">
+                <span id="discount-amount"></span>
+            </div>
+                <button type="submit" id="confirm-button">Xác nhận thanh toán</button>
+                <input type="hidden" name="recipient" value="{{ customer_email }}">
+                <textarea id="message_body" name="message_body" style="display: none;"></textarea>
+        </form>
+    </div>
+</body>
+<script>
+
+    // Function to populate the message_body textarea with data from info-columns
+function populateMessageBody() {
+    var infoColumns = document.querySelector(".info-columns");
+    var textContent = infoColumns.textContent.trim();
+
+    // Set the text content as the value of the message_body textarea
+    document.getElementById("message_body").value = textContent;
+}
+
+
+    // Call the populateMessageBody function when the page loads
+    window.addEventListener("load", populateMessageBody);
+
+    // This function shows a popup with the provided message
+    function showPopup(message) {
+        var popup = document.createElement("div");
+        popup.className = "popup";
+        popup.textContent = message;
+
+        popup.style.display = "flex";
+        popup.style.flexDirection = "column";
+        popup.style.alignItems = "center";
+        popup.style.justifyContent = "center";
+        document.body.appendChild(popup);
+
+        var closeButton = document.createElement("button");
+        closeButton.textContent = "Trở về trang chủ";
+        closeButton.onclick = function () {
+            window.location.href = "/";
+        };
+        popup.appendChild(closeButton);
+    }
+
+       // Function to check the promo code in real-time
+    function checkPromoCode() {
+        var promoCode = document.getElementById("promo_code").value;
+
+        fetch("/check_promo_code", {
+            method: "POST",
+            body: JSON.stringify({ promo_code: promoCode }),
+            headers: { 'Content-Type': 'application/json' }
+        })
+            .then(response => response.json())
+            .then(data => {
+                var resultDiv = document.getElementById("promo-code-validation-result");
+                if (data.valid) {
+                    resultDiv.innerHTML = `<span style="color: green;">Mã giảm giá hợp lệ, bạn được ưu đãi giảm lên đến: ${data.promo_value * 100}%</span>`;
+                } else {
+                    resultDiv.innerHTML = '<span style="color: red;">Mã giảm giá không hợp lệ. Mã sẽ không được áp dụng</span>';
+                }
+            })
+            .catch(error => console.error(error));
+    }
+
+    // Attach the function to the promo code input's change event
+    document.getElementById("promo_code").addEventListener("input", checkPromoCode);
+
+    // Function to disable the button on success
+    function handleConfirmationResponse() {
+        fetch("/confirm_payment", {
+            method: "POST",
+            body: new FormData(document.querySelector("form")),
+        })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    // Disable the "Xác nhận thanh toán" button
+                    document.getElementById("confirm-button").setAttribute("disabled", true);
+                    showPopup(data.message);
+                } else {
+                    alert(data.message);
+                }
+            })
+            .catch(error => console.error(error));
+    }
+
+    // Attach the function to the form's submit event
+    document.querySelector("form").addEventListener("submit", function (event) {
+        event.preventDefault();
+        handleConfirmationResponse();
+    });
+</script>
+
+</html>

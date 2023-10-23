@@ -1,0 +1,164 @@
+<div class="overlay" id="overlay">
+
+</div>
+
+<div class="wrapper fadeInDown"  id="hiddenDiv" style="width:auto" >
+      <div id="formContent" >
+         <!-- User profile -->
+        <div class="Userprofile" style="display:none;width:1000px;position: relative;top: -170px;left: -300px;" id="Userprof" >
+          <div class="container rounded bg-white mt-5 mb-5" >
+    <div class="row">
+        <div class="col-md-3 border-right">
+            <div class="d-flex flex-column align-items-center text-center p-3 py-5">
+                <img class="rounded-circle mt-5" width="150px" src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg">
+                <span class="font-weight-bold">{{ session.Ho }} {{ session.Ten }}</span>
+                <span class="text-black-50">{{ session.Email or 'Email:'}}</span>
+                <span class="text-black-50">{{ session.Thanh_pho or 'Thành phố cư trú:'}}</span>
+                <span class="text-black-50">{{ session.Sdt or 'Số điện thoại:'}}</span>
+            </div>
+        </div>
+        <div class="col-md-5 border-right" >
+            <form method="POST" action="/update_profile" id="update-form">
+                <div class="p-3 py-5">
+                        <h4 class="text-center">Thiết lập thông tin </h4>
+                    <br>
+                    <div class="row mt-3">
+                        <div class="col-md-12"><input type="text" class="form-control" id="ho" name="ho" placeholder="Họ" value=""></div>
+                        <div class="col-md-12"><input type="text" class="form-control" id="ten" name="ten" placeholder="Tên" value=""></div>
+                        <div class="col-md-12"><input type="text" class="form-control" id="email" name="email" placeholder="Email" value=""></div>
+                        <div class="col-md-12"><input type="text" class="form-control" id="thanh_pho" name="thanh_pho" placeholder="Thành phố cư trú" value=""></div>
+                        <div class="col-md-12"><input type="text" class="form-control" id="sdt" name="sdt" placeholder="Số điện thoại" value=""></div>
+                    </div>
+                    <div id="content2" style="color: red; display: block;"></div>
+                    <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="submit">Lưu Thông Tin</button></div>
+
+                </div>
+            </form>
+        </div>
+        <div class="col-md-4">
+            <form method="POST" action="/change_password" id="password-form">
+                <div class="p-3 py-5">
+                    <h4 class="text-center">Mật khẩu</h4>
+                    <br>
+                    <div class="col-md-12">
+                        <input type="password" class="form-control" id="old_password" name="old_password" placeholder="Mật khẩu cũ" value="">
+                    </div>
+                    <div class="col-md-12">
+                        <input type="password" class="form-control" id="new_password" name="new_password" placeholder="Mật khẩu mới" value="">
+                    </div>
+                    <div class="col-md-12">
+                        <input type="password" class="form-control" id="confirm_password" name="confirm_password" placeholder="Xác nhận mật khẩu" value="">
+                    </div>
+                    <div id="content1" style="color: red; display: block;">
+                    </div>
+                    <div class="mt-5 text-center">
+                        <button class="btn btn-primary password-button" type="submit">Lưu Mật Khẩu</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+        </div>
+        <div id="login-form" style="background: #fff;">
+          <!-- Icon -->
+        <div class="fadeIn first" style="visibility:hidden" >
+          <img src="http://danielzawadzki.com/codepen/01/icon.svg" id="icon" alt="User Icon" />
+        </div>
+        <!-- Login Form -->
+        <form action ="/login" method="post" id="login1" >
+          <input type="text" id="login" class="fadeIn second" name= "login" placeholder="Tài khoản">
+          <input type="password" id="password" class="fadeIn third" name="password" placeholder="Mật khẩu">
+          <input type="submit" class="fadeIn fourth" style="top:10px"value="Đăng nhập">
+            <!-- Error Message -->
+        <div id="content" style="color: red; display: block;">
+        </div>
+
+        </form>
+
+        <div id="formFooter">
+            <p>Kính chào quý khách</p>
+            <p>Chào mừng quý khách đến với dịch vụ đặt tour trực tuyến của chúng tôi</p>
+            <p>Mong quý khách sẽ có một trải nghiệm tuyệt vời khi sử dụng dịch vụ</p>
+        </div>
+        </div>
+      </div>
+    </div>
+
+ <script>
+        $(document).ready(function() {
+            $('#login1').submit(function(e) {
+                e.preventDefault(); // Prevent the default form submission
+
+                // Serialize the form data
+                var formData = $(this).serialize();
+
+                // Make an AJAX request to register the user
+                $.ajax({
+                    type: 'POST',
+                    url: '/login',
+                    data: formData,
+                    success: function(response) {
+                        // Check for success or error
+                        if (response.success) {
+                            // Registration successful, display a success message
+                            $('#content').html('<p>' + response.message + '</p>').css('color', 'green');
+                        } else {
+                            // Registration failed, display an error message
+                            $('#content').html('<p>' + response.message + '</p>').css('color', 'red');
+                        }
+                    }
+                });
+            });
+        });
+        $(document).ready(function() {
+            $('#password-form').submit(function(e) {
+                e.preventDefault(); // Prevent the default form submission
+
+                // Serialize the form data
+                var formData = $(this).serialize();
+
+                // Make an AJAX request to change the password
+                $.ajax({
+                    type: 'POST',
+                    url: '/change_password',
+                    data: formData,
+                    success: function(response) {
+                        // Check for success or error
+                        if (response.success) {
+                            // Password change successful, display a success message
+                            $('#content1').html('<p>' + response.message + '</p>').css('color', 'green');
+                        } else {
+                            // Password change failed, display an error message
+                            $('#content1').html('<p>' + response.message + '</p>').css('color', 'red');
+                        }
+                    }
+                });
+            });
+        });
+         $(document).ready(function() {
+            $('#update-form').submit(function(e) {
+                e.preventDefault(); // Prevent the default form submission
+
+                // Serialize the form data
+                var formData = $(this).serialize();
+
+                // Make an AJAX request to change the password
+                $.ajax({
+                    type: 'POST',
+                    url: '/update_profile',
+                    data: formData,
+                    success: function(response) {
+                        // Check for success or error
+                        if (response.success) {
+                            // Password change successful, display a success message
+                            $('#content2').html('<p>' + response.message + '</p>').css('color', 'green');
+                        } else {
+                            // Password change failed, display an error message
+                            $('#content2').html('<p>' + response.message + '</p>').css('color', 'red');
+                        }
+                    }
+                });
+            });
+        });
+    </script>

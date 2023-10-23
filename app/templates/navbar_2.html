@@ -1,0 +1,23 @@
+<header data-thq="thq-navbar" class="home-navbar">
+                <img alt="logo" src="{{ url_for('static', filename='public/logo.svg') }}" class="home-logo" />
+                <div data-thq="thq-burger-menu" class="home-menu">
+                  <div class="home-links">
+                    <a href="/" class="home-link link">Trang chủ</a>
+                    <a href="#register" id="show2" class="home-link01 link" style="display: {% if 'user_id' in session %}none{% else %}block{% endif %}">Đăng ký</a>
+                  <div class="user-menu">
+                    <a href="#login" id="show1" class="home-link01 link" style="display: {% if 'user_id' in session %}none{% else %}block{% endif %}" >Đăng nhập</a>
+                    <div class="dropdown" style="display: {% if 'user_id' in session %}block{% else %}none{% endif %}">
+                      <a href="#taikhoan" class="home-link01 link">{{ session['username'] }}</a>
+                      <div class="dropdown-content">
+                        <a href="/logout">Đăng xuất</a>
+                          <a href="#profile" id="show3">Tài khoản</a>
+                          <a href="{{url_for('lichsu_datttour')}}">Tour đã đặt</a>
+                          {% if current_user.user_role == 0%}
+                          <a href="{{url_for('admin')}}">Admin</a>
+                          {% endif %}
+                      </div>
+                    </div>
+                  </div>
+                  </div>
+                </div>
+              </header>

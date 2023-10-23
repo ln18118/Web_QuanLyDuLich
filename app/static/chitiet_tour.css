@@ -1,0 +1,194 @@
+.main-1 {
+  width: 1130px;
+  height : 850px;
+  background: rgba(255, 255, 255, 1);
+  opacity: 1;
+  position: relative;
+  left: -105px;
+  box-shadow: 0 4px 48px rgba(0, 0, 0, 0.09000000357627869);
+  overflow: hidden;
+  margin-bottom: -30px
+}
+.v0_1311 {
+  width: 481px;
+  height: 780px;
+  background: rgba(236, 236, 236, 1);
+  opacity: 1;
+  position: relative;
+  top: 20px;
+  left: 630px;
+  overflow: hidden;
+  margin-bottom: 100px;
+}
+.v0_1329 {
+  width: 314px;
+  color: rgba(24, 30, 75, 1);
+  position: absolute;
+  top: 39px;
+  left: 82px;
+  font-family: Volkhov;
+  font-weight: Bold;
+  font-size: 42px;
+  opacity: 1;
+  text-align: center;
+}
+
+.v0_1328 {
+  width: 401px;
+  color: rgba(0, 0, 0, 1);
+  position: absolute;
+  top: 102px;
+  left: 38px;
+  font-family: Poppins;
+  font-weight: Regular;
+  font-size: 16px;
+  opacity: 1;
+  text-align: center;
+}
+
+.name-input {
+    position: relative;
+    top: 210px;
+    left: 35px;
+    opacity: 1;
+}
+
+.email-input {
+    position: relative;
+    top: 210px;
+    left: 35px;
+    opacity: 1;
+}
+
+.phone-input {
+    position: relative;
+    top: 210px;
+    left: 35px;
+    opacity: 1;
+}
+
+.date-input {
+    position: relative;
+    top: 210px;
+    left: 35px;
+    opacity: 1;
+}
+
+.people-input {
+    position: relative;
+    top: 210px;
+    left: 35px;
+    opacity: 1;
+}
+
+.note-input {
+    position: relative;
+    top: 210px;
+    left: 35px;
+    opacity: 1;
+}
+
+
+.button1 {
+  width: 176px;
+  height: 56px;
+  background: rgba(223, 105, 81, 1);
+  margin: 10px;
+  opacity: 1;
+  position: absolute;
+  top: 650px;
+  left: 153px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  box-shadow: 0 20px 35px
+    rgba(
+      0.8745098114013672,
+      0.4117647111415863,
+      0.3176470696926117,
+      0.15000000596046448
+    );
+  overflow: hidden;
+  color: white;
+}
+
+
+.v0_1194 {
+  width: 314px;
+  color: rgba(24, 30, 75, 1);
+  position: static;
+    margin-left: 35px;
+  font-family: Volkhov;
+  font-weight: Bold;
+  font-size: 42px;
+  opacity: 1;
+  text-align: center;
+}
+
+.dia_diem {
+  width: 550px;
+  height: 77px;
+  opacity: 1;
+  position: absolute;
+  top: 55px;
+  left: 0px;
+  overflow: hidden;
+}
+
+.tien {
+  width: 99px;
+  color: rgba(223, 105, 81, 1);
+  position: absolute;
+  font-family: Poppins;
+  right: 20px;
+  top: 11px;
+  font-size: 29px;
+}
+
+.Details {
+  width: 545px;
+  height :780px;
+  color: rgba(0, 0, 0, 1);
+  position: relative;
+  top: -735px;
+  left:38px;
+  font-family: Poppins;
+  font-weight: Regular;
+  font-size: 16px;
+  opacity: 1;
+  text-align: left;
+}
+
+.Time {
+  width: 500px;
+  color: rgba(223, 105, 81, 1);
+  position: relative;
+  top: 10px;
+  left: 0px;
+  font-family: Poppins;
+  font-weight: Bold;
+  font-size: 20px;
+  opacity: 1;
+  text-align: left;
+}
+
+.Include-Box{
+   position: absolute;
+    width: 300px;
+    left: 150px;
+    top: 93px;
+}
+.pic{
+    position:relative;
+    width: 600px;
+    height: 300px;
+    top: 85px;
+    left: -14px
+}
+.imagwe{
+    height:200px;
+    width:185px;
+    margin:3px
+}
+

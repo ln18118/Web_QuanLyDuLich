@@ -1,0 +1,197 @@
+<div class="main-1">
+  <div class="d-flex flex-column mt-2" style="position: absolute; left: 10px">
+    <button id="detailsButton1" class="btn btn-primary btn-sm">←</button>
+  </div>
+  <div class="dia_diem">
+    <span class="v0_1194" id="dataIdDisplay"></span>
+  </div>
+  <div class="dia_diem">
+    <span class="tien" id="dataTienDisplay" style="width: 150px; height: 50px;"></span>
+  </div>
+
+
+  <div class="v0_1311">
+    <span class="v0_1329">Đặt tour</span>
+    <span class="v0_1328" >
+      Trải nghiệm cảm giác du lịch có một không hai khi đến với tour du lịch của
+      chúng tôi</span
+    >
+    <div class="Box">
+      <form
+        action="/payment"
+        method="post"
+        onsubmit="return validateForm1()"
+        name="myForm1"
+        required
+      >
+        <input
+          class="name-input"
+          type="text"
+          placeholder="Tên"
+          name="name"
+          id="input1"
+        />
+        <input
+          class="email-input"
+          type="text"
+          placeholder="Email"
+          name="email"
+          id="input2"
+        />
+        <input
+          class="phone-input"
+          type="text"
+          placeholder="Số điện thoại"
+          name="phone"
+          id="input3"
+        />
+        <input
+          class="people-input"
+          type="text"
+          placeholder="Số người đi"
+          name="people"
+          id="input5"
+        />
+        <input
+          class="note-input"
+          type="text"
+          placeholder="Ghi chú"
+          name="note"
+          id="input6"
+        />
+        <input type="hidden" name="updatedSoLuong" id="updatedSoLuongInput">
+        <input type="hidden" name="updatedSoLuong2" id="updatedSoLuongInput2">
+        {% if 'user_id' in session %}
+            <button class="button1" id="bookNowButton">Đặt ngay</button>
+        {% else %}
+            <a style="
+    position: absolute;
+    top: 650px;
+    right: 150px;
+" >Bạn cần phải đăng nhập</a>
+        {% endif %}
+      </form>
+    </div>
+  </div>
+
+  <div class="Details">
+    <span style="position: absolute" id="dataMotaDisplay"> </span>
+    <p id="dataSLDisplay" style="display:none"></p>
+
+    <div class="more-details" style="position: absolute; top: 237px">
+      <div class="Time">
+        <span>Khởi Hành</span>
+        <span
+          id="Departure"
+          style="color: black; right: -75px; position: relative"
+        >
+          HCM - 13:00</span
+        >
+      </div>
+
+      <div class="Time" style="position: relative; margin-top: 20px">
+        <span style="margin-top: 50px">Kết Thúc</span>
+        <span
+          id="Return"
+          style="color: black; right: -90px; position: relative"
+        >
+            </span
+        >
+      </div>
+
+      <div class="Time" style="position: relative; margin-top: 20px">
+        <span style="margin-top: 50px">Include</span>
+      </div>
+      <div class="Include-Box">
+        <div style="position: relative; margin-top: 20px; margin-left: 32px">
+          <span style="color: black; position: absolute;t" id="bg1" > 5 Star Hotel</span>
+          <span style="color: black; position: absolute; right: -110px" id="bg2">
+            5 Star Hotel</span
+          >
+        </div>
+        <div style="position: relative; top: 40px; margin-left: 32px">
+          <span style="color: black; position: absolute" id="bg3"> 5 Star Hotel</span>
+          <span style="color: black; position: absolute; right: -110px" id="bg4">
+            5 Star Hotel</span
+          >
+        </div>
+      </div>
+
+      <div class="pic">
+        <img
+          alt="image"
+          src="{{ dia_diem['Anh'] }}"
+          class="imagwe"
+        />
+        <img
+          alt="image"
+          src="{{ dia_diem['Anh2'] }}"
+          class="imagwe"
+        />
+        <img
+          alt="image"
+          src="{{ dia_diem['Anh3'] }}"
+          class="imagwe"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    var bookNowButton = document.getElementById("bookNowButton");
+
+    // Function to fetch the token and redirect to the authentication URL
+    function redirectToAuthentication() {
+      // Make an AJAX request to your server to generate the token
+      fetch("/generate_token", {
+        method: "POST", // Assuming you use POST to generate the token
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          var token = data.token;
+          var authenticationUrl = `http://127.0.0.1:5000/authenticate?token=${token}`;
+
+          // Redirect the user to the authentication URL
+          window.location.href = authenticationUrl;
+        })
+        .catch((error) => {
+          console.error("Error fetching token:", error);
+        });
+
+
+    }
+
+    // Attach a click event listener to the button
+    bookNowButton.addEventListener("click", redirectToAuthentication);
+  });
+
+    function validateForm1() {
+      var x = document.forms["myForm1"]["name"].value;
+      var y = document.forms["myForm1"]["email"].value;
+      var z = document.forms["myForm1"]["phone"].value;
+      var k = document.forms["myForm1"]["people"].value;
+      var p = document.getElementById("dataSLDisplay").textContent;
+      var updatedSoLuong = parseInt(p) - parseInt(k);
+      document.getElementById("updatedSoLuongInput").value = updatedSoLuong;
+      if (x == "") {
+        alert("Nhập Tên");
+        return false;
+      }
+      if (y == "") {
+        alert("Nhập Email");
+        return false;
+      }
+      if (z == "") {
+        alert("Nhập số điện thoại");
+        return false;
+      }
+      if (updatedSoLuong < 0 || k === "") {
+        alert("Nhập đúng số lượng với số chỗ còn trống");
+        return false;
+      }
+    }
+
+
+</script>

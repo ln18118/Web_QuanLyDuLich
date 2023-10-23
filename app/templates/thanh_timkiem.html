@@ -1,0 +1,64 @@
+
+
+ <form action="/setcookie" method="POST" onsubmit="return validateForm()" name="myForm" required>
+
+               <div class="home-border">
+                  <div class="home-filter"  >
+                    <img
+                      alt="image"
+                      src="{{ url_for('static', filename='public/Icons/location.svg') }}"
+                      class="home-image"
+                    />
+                          <input type="text" placeholder="{{ input_d1 }}" class="home-textinput input" name="iput1" id="input1">
+
+                    <input
+                      type="date"
+                      placeholder="{{ input_d2 }}";
+                      class="home-textinput1 input"
+                      name="iput2"
+                      id="input2"
+                    />
+
+                    <input
+                      type="number"
+                      placeholder=""
+                      class="home-textinput2 input"
+                      name="iput3"
+                      id="input3"
+                    />
+                    <form action="/tour" method="GET" style="max-height: 10px;">
+                        <div class="home-search" style="position: relative;">
+                            <button type="submit" style="background-color: transparent; border: none;outline: none;"><img
+                                alt="image"
+                                src="{{ url_for('static', filename='public/Icons/search.svg') }}"
+                                class="home-icon10"
+                            /></button>
+                        </div>
+                    </form>
+                  </div>
+                </div>
+
+ </form>
+ <script>
+
+
+function validateForm() {
+  var x = document.forms["myForm"]["iput1"].value;
+  var y = document.forms["myForm"]["iput2"].value;
+  var z = document.forms["myForm"]["iput3"].value;
+  if (x == "") {
+    alert("Nhập địa chỉ");
+    return false;
+  }
+  if (y == "") {
+    alert("Nhập ngày");
+    return false;
+  }
+  if (z == "") {
+    alert("Nhập số lượng người");
+    return false;
+  }
+}
+
+ </script>
+

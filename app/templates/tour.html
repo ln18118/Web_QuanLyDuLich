@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+    <body>
+    <div class="element element1">
+        {% include 'chinhgiua.html' %}
+    </div>
+    <div class="element element2" style="display:block;width: 300px;">
+        <section class="section-medium" style="margin-left:55px;margin-top:-35px;border-radius: 25px;">
+    <div class="row" id="row1"  >
+         <div class="Rectangle19317" style="border-top-left-radius: 25px;border-top-right-radius: 25px;width: 1200px; height: 100px; background: #F8F8F8">
+                <div style="position: absolute;padding : 10px;left: 20%;">
+                     {% include 'thanh_timkiem.html' %}
+                </div>
+         </div>
+    </div>
+            <div class="row" id="row2">
+        <div class="columns medium-4">
+            <div class="Rectangle19317" style="width: 1200px;position:static ; background: white;margin-top:23px;; box-shadow: 0px 4px 48px 12px rgba(0, 0, 0, 0.09)">
+                <img src="http://www.placehold.it/800x600/b5bbbd/e2e6e7/&text=img" alt="" class="img-responsive">
+                <div class="Review-rating" style="display:flex;justify-content: space-between;align-items: right;padding : 30px">
+                    <div class="container mt-5 mb-5" >
+                        <div class="d-flex justify-content-center row">
+                            <div class="col-md-10">
+                                <div id="tourDetailsContainer" >
+
+                                    <ul>
+                                        {% set var = namespace(value=0) %}
+                                        {% set date_string = input_d2 %}
+                                        {% for dia_diem in session['dia_diem_data'] %}
+                                        <li style="list-style-type: none;">
+
+                                           {% if dia_diem['SoLuong'] >= input_d3|int and dia_diem['KhoiHanh'].strftime('%Y-%m-%d') >= input_d2 and dia_diem['Ten'] == input_d1 %}
+                                            <div class="tour-item" data-id="{{ dia_diem['ID'] }}" data-sl="{{ dia_diem['SoLuong'] }}" data-ten="{{ dia_diem['Ten'] }}" data-gia="{{ dia_diem['Gia'] }}" data-mota="{{ dia_diem['Mota'] }}" data-KH="{{ dia_diem['KhoiHanh']}}" data-KT="{{ dia_diem['KetThuc'] }}"
+                                            data-bg1="{{ dia_diem['bg1'] }}" data-bg2="{{ dia_diem['bg2'] }}" data-bg3="{{ dia_diem['bg3'] }}" data-bg4="{{ dia_diem['bg4'] }}">
+                                                {% include 'hienthi_tour.html' %}
+                                            </div>
+                                            {% set var.value = var.value + 1 %}
+                                            {% endif %}
+                                        </li>
+                                        {% endfor %}
+                                        {% if var.value | int == 0 %}
+                                            <p style="position: absolute;left: 35%;">Hiện thời không còn tour du lịch này</p>
+                                        {% endif %}
+                                    </ul>
+                                </div>
+                                {% for dia_diem in session['dia_diem_data'] %}
+                                <div id="chitiet_tour" style="display:none" >
+                                    {% include 'chitiet_tour.html' %}
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+{% include 'duoi.html' %}
+
+<script>
+// Function to clear a specific cookie by name
+    function clearCookie(cookieName) {
+        document.cookie = cookieName + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    }
+
+    // Automatically clear the 'input_cookie' when the page is loaded
+    window.onload = function () {
+        clearCookie('input_cookie'); // Replace 'input_cookie' with your actual cookie name
+    };
+// Get all elements with the class "tour-item"
+var tourItems = document.querySelectorAll(".tour-item");
+
+// Loop through each tour item and add a click event listener
+tourItems.forEach(function (tourItem) {
+    var detailsButton = tourItem.querySelector("#detailsButton");
+
+    // Check if the detailsButton exists within the tourItem
+    if (detailsButton) {
+        detailsButton.addEventListener("click", function () {
+            var showTourContainer = document.getElementById("tourDetailsContainer");
+            showTourContainer.style.display = (showTourContainer.style.display === "none") ? "block" : "none";
+            var showChiTiet = document.getElementById("chitiet_tour");
+            showChiTiet.style.display = "block";
+
+            var dataTen = tourItem.getAttribute("data-ten");
+            var dataIdDisplay = document.getElementById("dataIdDisplay");
+            dataIdDisplay.textContent = dataTen;
+
+            var dataTien =  tourItem.getAttribute("data-gia");
+            var dataTienDisplay = document.getElementById("dataTienDisplay");
+            dataTienDisplay.textContent = dataTien + "/người";
+
+            var dataKH =  tourItem.getAttribute("data-KH");
+            var dataKHDisplay = document.getElementById("Departure");
+            dataKHDisplay.textContent = dataKH;
+
+            var dataKT =  tourItem.getAttribute("data-KT");
+            var dataKTDisplay = document.getElementById("Return");
+            dataKTDisplay.textContent = dataKT;
+
+            var dataSoLuong =  tourItem.getAttribute("data-sl");
+            var dataSLDisplay = document.getElementById("dataSLDisplay");
+            dataSLDisplay.textContent = dataSoLuong;
+
+            var databg1 =  tourItem.getAttribute("data-bg1");
+            var databg2 =  tourItem.getAttribute("data-bg2");
+            var databg3 =  tourItem.getAttribute("data-bg3");
+            var databg4 =  tourItem.getAttribute("data-bg4");
+            var databg1Display = document.getElementById("bg1");
+            var databg2Display = document.getElementById("bg2");
+            var databg3Display = document.getElementById("bg3");
+            var databg4Display = document.getElementById("bg4");
+            databg1Display.textContent = databg1;
+            databg2Display.textContent = databg2;
+            databg3Display.textContent = databg3;
+            databg4Display.textContent = databg4;
+
+            var dataMota =  tourItem.getAttribute("data-mota");
+            var dataMotaDisplay = document.getElementById("dataMotaDisplay");
+            dataMotaDisplay.textContent = dataMota;
+        });
+    }
+});
+
+   document.getElementById("detailsButton1").addEventListener("click", function () {
+         var showTourContainer = document.getElementById("tourDetailsContainer");
+         showTourContainer.style.display = (showTourContainer.style.display === "none") ? "block" : "none";
+        var showChiTiet = document.getElementById("chitiet_tour");
+        showChiTiet.style.display = "none"
+   });
+
+function selectTour(id) {
+    // Display the details for the clicked dia_diem using its ID
+    var detailsDiv = id;
+    document.getElementById("updatedSoLuongInput2").value = detailsDiv;
+
+}
+
+
+</script>
+
+
+
+    </body>
+
+
+</html>

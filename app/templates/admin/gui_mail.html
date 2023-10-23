@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ADMIN PAGE</title>
+</head>
+    <h1>Send Email</h1>
+    <form method="POST">
+        <div class="form-group" style="
+    padding-bottom: 10px;
+">
+            <label for="recipient">Người nhận:</label>
+            <input type="email" name="recipient" required>
+        </div>
+        <div class="form-group"style="
+    padding-bottom: 10px;
+">
+            <label for="subject">Tiêu đề</label>
+            <input type="text" name="subject" required style="
+    position: relative;
+    left: 29px;
+">
+        </div>
+        <div class="form-group"style="
+    padding-bottom: 10px;
+">
+                <label for="message_body" >Nội Dung</label>
+            <textarea name="message_body" required style="
+    left: 12px;
+    height: 300px;
+    width: 300px;
+    position: relative;
+"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary" >Send Email</button>
+        <a href="/admin"> Quay lại admin</a>
+    </form>
+

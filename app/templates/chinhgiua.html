@@ -1,0 +1,78 @@
+{% include 'lienket.html' %}
+
+<div>{% include 'navbar.html' %} {% include 'dang_ki.html' %}</div>
+
+<section class="home-hero">
+  <div class="home-main">
+    <div class="home-video">
+      <video
+        src=""
+        poster="{{ url_for('static', filename='public/Offers/testss.png') }}"
+        class="home-video1"
+      ></video>
+
+      <div class="home-tint"></div>
+    </div>
+    <div class="home-content">
+      {% include 'navbar_2.html' %}
+
+      <div class="home-center">
+        <div class="home-heading">
+          <h1 class="home-header">
+            Nhìn thế giới như một người dân địa phương
+          </h1>
+          <p class="home-caption">
+            Tìm cho bản thân 1 tour du lịch thoả đáng với thời gian và cảm xúc
+            hiện tại
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  function toggleElements(
+    showOverlay,
+    showHiddenDiv,
+    showUserprof,
+    showOverlay1,
+    showHiddenDiv1,
+  ) {
+    var overlay = document.getElementById("overlay");
+    var hiddenDiv = document.getElementById("hiddenDiv");
+    var hiddenDis = document.getElementById("Userprof");
+    var hiddenDis1 = document.getElementById("login-form");
+    var hiddenDis2 = document.getElementById("formContent");
+    var overlay1 = document.getElementById("overlay1");
+    var hiddenDiv1 = document.getElementById("hiddenDiv1");
+
+    overlay.style.display = showOverlay ? "block" : "none";
+    hiddenDiv.style.display = showHiddenDiv ? "block" : "none";
+    hiddenDis.style.display = showUserprof ? "block" : "none";
+    hiddenDis1.style.display = showUserprof ? "none" : "block";
+    hiddenDis1.style.visibility = showUserprof ? "hidden" : "visible";
+    hiddenDis2.style.maxWidth = showUserprof ? "1px" : "450px";
+    overlay1.style.display = showOverlay1 ? "block" : "none";
+    hiddenDiv1.style.display = showHiddenDiv1 ? "block" : "none";
+  }
+
+  document.getElementById("show1").addEventListener("click", function () {
+    toggleElements(true, true, false, false, false);
+  });
+
+  document.getElementById("overlay").addEventListener("click", function () {
+    toggleElements(false, false, false, false, false);
+  });
+
+  document.getElementById("show3").addEventListener("click", function () {
+    toggleElements(true, true, true, false, false);
+  });
+
+  document.getElementById("show2").addEventListener("click", function () {
+    toggleElements(false, false, false, true, true);
+  });
+  document.getElementById("overlay1").addEventListener("click", function () {
+    toggleElements(false, false, false, false, false);
+  });
+</script>
