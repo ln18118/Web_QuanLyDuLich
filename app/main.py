@@ -408,6 +408,7 @@ def confirm_payment():
             Hoadon1 = models.HoaDon(
                 Tour_ID=tour_id,
                 So_tien_thanh_toan=total_price,
+                UuDai_ID=uu_dai.id,
                 So_luong_nguoi_di=num_people,
                 khachhang_id=current_user.ID,
                 Note=customer_note
