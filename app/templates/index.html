@@ -175,7 +175,7 @@
                                 <input
                                     type="text"
                                     name="input_value"
-                                    value="Đà Lạt"
+                                    value="Đà Lạt"
                                     style="display:none"
                                 />
                               <input
@@ -907,6 +907,16 @@
       src="https://unpkg.com/@teleporthq/teleport-custom-scripts"
     ></script>
     <script>
+
+// Function to clear a specific cookie by name
+    function clearCookie(cookieName) {
+        document.cookie = cookieName + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    }
+
+    // Automatically clear the 'input_cookie' when the page is loaded
+    window.onload = function () {
+        clearCookie('input_cookie'); // Replace 'input_cookie' with your actual cookie name
+    };
 
 function toggleElements(showOverlay, showHiddenDiv, showUserprof, showOverlay1, showHiddenDiv1) {
   var overlay = document.getElementById("overlay");
