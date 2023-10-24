@@ -106,28 +106,28 @@ if __name__ == "__main__":
         db.session.add(User)
 
         # Example data for DiaDiem table
-        diadiem = DiaDiem(ID=1, Ten='Đà Lạt',
+        diadiem = DiaDiem(ID=1, Ten='Đà Lạt',
                           Mo_ta='Đà Lạt là thành phố tỉnh lỵ trực thuộc tỉnh Lâm Đồng, nằm trên cao nguyên Lâm Viên, thuộc vùng Tây Nguyên, Việt Nam. Từ xa xưa, vùng đất này vốn là địa bàn cư trú của những cư dân người Lạch, người Chil và người Srê thuộc dân tộc Cơ Ho. Cuối thế kỷ 19, khi tìm kiếm một địa điểm để xây dựng trạm nghỉ dưỡng dành cho người Pháp ở Đông Dương, Toàn quyền Paul Doumer đã quyết định chọn cao nguyên Lâm Viên theo đề nghị của bác sĩ Alexandre Yersin, người từng thám hiểm tới nơi đây vào năm 1893. Trong nửa đầu thế kỷ 20, từ một địa điểm hoang vu, người Pháp đã quy hoạch và xây dựng lên một thành phố xinh đẹp với những biệt thự',
                           Gia=200.0)
-        diadiem2 = DiaDiem(ID=2, Ten='Vũng Tàu',
+        diadiem2 = DiaDiem(ID=2, Ten='Vũng Tàu',
                            Mo_ta='Đây là trung tâm kinh tế, tài chính, văn hóa, du lịch, giao thông - vận tải và giáo dục và là một trong những trung tâm kinh tế của vùng Đông Nam Bộ.',
                            Gia=200.0)
-        diadiem3 = DiaDiem(ID=3, Ten='Hội An',
+        diadiem3 = DiaDiem(ID=3, Ten='Hội An',
                            Mo_ta='Phố cổ Hội An từng là một thương cảng quốc tế sầm uất, gồm những di sản kiến trúc đã có từ hàng trăm năm trước.',
                            Gia=200.0)
-        diadiem4 = DiaDiem(ID=4, Ten='Đồng Bằng Sông Cửu Long',
+        diadiem4 = DiaDiem(ID=4, Ten='Đồng Bằng Sông Cửu Long',
                            Mo_ta='Vùng đồng bằng sông Cửu Long là vùng cực nam của Việt Nam, một trong hai phần của Nam Bộ',
                            Gia=300.0)
-        diadiem5 = DiaDiem(ID=5, Ten='Sài Gòn',
+        diadiem5 = DiaDiem(ID=5, Ten='Sài Gòn',
                            Mo_ta='Thành phố Hồ Chí Minh (thường được gọi là Sài Gòn) là một thành phố ở miền nam Việt Nam nổi tiếng với vai trò nòng cốt trong chiến tranh Việt Nam.',
                            Gia=400.0)
-        diadiem6 = DiaDiem(ID=6, Ten='Hà Nội',
+        diadiem6 = DiaDiem(ID=6, Ten='Hà Nội',
                            Mo_ta='Hà Nội, thủ đô của Việt Nam, nổi tiếng với kiến trúc trăm tuổi và nền văn hóa phong phú',
                            Gia=200.0)
         diadiem7 = DiaDiem(ID=7, Ten='Nha Trang',
                            Mo_ta='Nha Trang là một thành phố ven biển và là trung tâm chính trị, kinh tế, văn hóa, khoa học kỹ thuật và du lịch của tỉnh Khánh Hòa, Việt Nam',
                            Gia=100.0)
-        diadiem8 = DiaDiem(ID=8, Ten='Đà Nẵng',
+        diadiem8 = DiaDiem(ID=8, Ten='Đà Nẵng',
                            Mo_ta='Đà Nẵng là một trong năm thành phố trực thuộc trung ương của Việt Nam',
                            Gia=200.0)
         diadiem9 = DiaDiem(ID=9, Ten='Sapa',
